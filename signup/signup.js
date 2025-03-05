@@ -29,7 +29,7 @@ button.addEventListener("click", function (event) {
       const user = userCredential.user;
       Swal.fire({
         icon: "success",
-        title: "Success!",
+        title: " SignUp Successfully!",
         text: "Account created successfully",
         confirmButtonText: "OK",
       });

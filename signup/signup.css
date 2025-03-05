@@ -24,7 +24,7 @@ body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  background: #fff;
+  background:linear-gradient(red,green,yellow );
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -42,7 +42,7 @@ section {
 
 h1 {
   font-size: 28px;
-  color: #1a73e8;
+  color:lawngreen;
   margin-bottom: 25px;
   text-align: center;
 }
@@ -80,13 +80,13 @@ input::placeholder {
 }
 
 input:focus {
-  border-color: #1a73e8;
+  border-color:#333;
   box-shadow: 0 0 8px rgba(26, 115, 232, 0.4);
 }
 
 button#submit {
-  background: #1a73e8;
-  color: #fff;
+  background:cyan;
+  color:black;
   padding: 15px 30px;
   border: none;
   border-radius: 10px;
@@ -99,7 +99,8 @@ button#submit {
 }
 
 button#submit:hover {
-  background: #1557b0;
+  background:black;
+  color:burlywood;
 }
 
 .image-section {
