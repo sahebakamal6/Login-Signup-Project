@@ -2,32 +2,103 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: #1e242a;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+    animation: fadeIn 1s ease-out;
+} 
+
+@keyframes fadeIn {
+    0% {
+         opacity: 0; 
+    }
+    100% { 
+        opacity: 1;
+     }
+  }
+
+  .cursor{
+    z-index: 999;
+    position: fixed;
+    background: #c126c1;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 20px #c126c1,0 0 60px #c126c1,0 0 100px #c126c1;
+    animation: colors 5s infinite;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+  
+  @keyframes colors{
+    0%{
+      filter: hue-rotate(0deg);
+    }
+    100%{
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  .cursor::before{
+    content: '';
+    position: absolute;
+    background-color: #c126c1;
+    width: 50px;
+    height: 50px;
+    opacity: 0.2;
+    transform: translate(-30%, -30%);
+    border-radius: 50%;
+  }
+  
 
 .container {
+    max-width: 800px;
     display: flex;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to bottom right, rgba(177, 0, 150, 0.365), rgba(10, 10, 10, 0.587));  padding: 30px;
+    border-radius: 8px;
+    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.614);
     overflow: hidden;
     width: 90%;
-    max-width: 800px;
+}
+
+.button-container{
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 180px;
+    max-width: 500px;
+    margin-top: 10px;
 }
 .left-side {
     flex: 1;
-    display: none;
 }
 
 .left-side img {
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
+    height: 60vh;
+    object-fit: contain;
+    margin-top: 50px;
+    animation: floatAnimation 3s ease-in-out infinite;
 }
+
+@keyframes floatAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+
 .right-side {
     flex: 1;
     padding: 40px;
@@ -40,7 +111,7 @@
 .right-side h2 {
     margin-bottom: 20px;
     font-size: 28px;
-    color: #333;
+    color: #fff;
 }
 
 .input-group {
@@ -48,6 +119,15 @@
     width: 100%;
     max-width: 350px;
     margin-bottom: 15px;
+    color: #fff;
+}
+
+input::-webkit-input-placeholder{
+    color: #fff;
+}
+
+input{
+    color: white;
 }
 
 .input-group .icon {
@@ -55,58 +135,173 @@
     left: 15px;
     top: 50%;
     transform: translateY(-50%);
-    color: #888;
+    color: #fff;
 }
 
 .input-group input {
     width: 100%;
     padding: 12px 12px 12px 40px;
-    border: 1px solid #ccc;
-    border-radius: 30px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
     font-size: 16px;
     outline: none;
     transition: 0.3s;
 }
 
 .input-group input:focus {
-    border-color: #667eea;
-    box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+
+    box-shadow: 0 0 3px black;
 }
 
 .checkbox-group {
     display: flex;
     align-items: center;
     font-size: 14px;
-    color: #555;
+    color: #fff ;
 }
 
 .checkbox-group input {
     margin-right: 10px;
 }
 
-.submit {
-    width: 100%;
-    max-width: 350px;
-    padding: 12px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-size: 16px;
+#submit{
+    width: 300px;
+    border: 1px solid rgba(177, 0, 150, 0.365);
+    background-color: rgba(0, 0, 0, 0.151);
+    padding: 10px 20px;
+    font-size: 20px;
     cursor: pointer;
-    transition: 0.3s;
+    margin: 10px;
+    color: white;
+    transition: .8s;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  #submit:hover{
+    letter-spacing: 5px;
+    box-shadow: 1px 1px 10px black;
+    color: black;
+  }
+  
+  #submit::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+    transition: .8s;
+  }
+  
+  #submit::before{
+    top: 0;
+    border-radius: 0 0 50% 50%;
+  }
+  
+  #submit:hover::before{
+    height: 100%;
+  }
+  
+
+#googleButton {
+    height: 45px;
+    width: 300px;
+    border: 1px solid rgba(177, 0, 150, 0.365);
+  background-color: rgba(0, 0, 0, 0.151);
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 10px;
+  color: white;
+  transition: .8s;
+  position: relative;
+  overflow: hidden;
 }
 
-.submit:hover {
-    background: linear-gradient(135deg, #764ba2, #667eea);
-}
+#googleButton:hover{
+    letter-spacing: 2px;
+    box-shadow: 1px 1px 10px black;
+    color: black;
+  }
+  
+  #googleButton::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgb(255, 255, 255);
+    z-index: -1;
+    transition: .8s;
+  }
+  
+  #googleButton::before{
+    top: 0;
+    border-radius: 0 0 50% 50%;
+  }
+  
+ #googleButton:hover::before{
+    height: 100%;
+  }
 
-@media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-    }
+  .googleLogo{
+    margin: auto;
+    position: absolute;
+    top: 13%;
+    right: 8%;
+  }
+
+  a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 2%;
+    align-items: center;
+  }
+  
+  a:hover{
+    color: rgba(177, 0, 150, 0.582);
+    transition: .3s linear;
+  }
+
+  @media (max-width: 768px) {
     .left-side {
-        display: block;
-        flex: 1;
+        display: none;
     }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+    }
+
+    .right-side {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .input-group {
+        max-width: 100%;
+        width: 100%;
+        margin-left: -10%;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    #submit, #googleButton {
+        width: 100%;
+    }
+
+    .googleLogo{
+        top: 15%;
+        right: 4%;
+      }
 }
+

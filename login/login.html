@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login Page</title>
+     <title>Login</title>
      <link rel="stylesheet" href="login.css" />
     <link
       rel="stylesheet"
@@ -15,12 +16,13 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
+    <div class="cursor"></div>
     <div class="container">
         <div class="left-side">
-            <img src="signin-image (1).jpg" alt="Signin Image">
+            <img src="https://thumbs.wbm.im/pw/small/b9e7d0a2ab30f500b14d6f250015477e.png" alt="Signin Image">
         </div>
         <div class="right-side">
-            <h2>Login</h2>
+            <h2>Account Login</h2>
             <form>
                 <div class="input-group">
                     <i class="fas fa-envelope icon"></i>
@@ -34,7 +36,14 @@
                     <input type="checkbox" id="remember-me">
                     <label for="remember-me">Remember Me</label>
                 </div>
+                <div class="button-container">
                 <button type="submit" id="submit">Login</button>
+                <button type="submit" id="googleButton">Login with Google <img src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" class="googleLogo" width="30" height="30" alt="googleLogo"></button>
+                <a href="#" id="homeButton">
+                    <p><i class='bx bx-arrow-back'></i> Back to Home</p>
+                </a> 
+            </div>
+            
             </form>
         </div>
     </div>

@@ -1,11 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
-import { getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-auth.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBQciTU9FfWQxTw-bq-qLSx-0giZt69hKw",
   authDomain: "authentication-9f1bd.firebaseapp.com",
@@ -15,27 +11,108 @@ const firebaseConfig = {
   appId: "1:16574654487:web:5fe664929ebf6619919452",
   measurementId: "G-DTZ6ZWDYEW",
 };
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const submit = document.getElementById("submit")
-submit.addEventListener("click",function (event) {
-  event.preventDefault()
-  const email = document.getElementById("email").value
-  const password = document.getElementById("password").value
-  const auth = getAuth();
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const loginForm = document.getElementById("loginForm");
+const emailField = document.getElementById("email");
+const passwordField = document.getElementById("password");
+const submitButton = document.getElementById("submit");
+const googleLoginButton = document.getElementById("googleButton");
+
+if (loginForm) {
+  loginForm.setAttribute("novalidate", "true");
+}
+
+
+submitButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  const email = emailField.value;
+  const password = passwordField.value;
+
+  if (!email || !password) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Email and password are required!",
+      confirmButtonText: "Try Again",
+    });
+    return;
+  }
+
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed up 
-      const user = userCredential.user;
-      alert ("login successfully......")
-     window.location.href= "inndex.html"
-      // ...
-})
-.catch((error) => {
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  alert(errorMessage)
-  // ..
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful!",
+        text: "Welcome!",
+        confirmButtonText: "OK",
+      });
+      window.location.href = "http://127.0.0.1:5501/index.html";
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+        confirmButtonText: "Try Again",
+      });
+    });
 });
-})
+
+
+googleLoginButton.addEventListener("click", (ev) => {
+  ev.preventDefault();
+
+
+  emailField.removeAttribute("required");
+  passwordField.removeAttribute("required");
+
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful!",
+        text: `Welcome, ${result.user.displayName}!`,
+        confirmButtonText: "OK",
+      });
+      window.location.href = "http://127.0.0.1:5501/index.html";
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.message,
+        confirmButtonText: "Try Again",
+      });
+    });
+});
+
+const cursor = document.querySelector(".cursor");
+var timeout;
+document.addEventListener("mousemove", (e) => {
+  cursor.style.top = e.pageY + "px";
+  cursor.style.left = e.pageX + "px";
+  cursor.style.display = "block";
+
+  function mouseStopped() {
+    cursor.style.display = "none";
+  }
+  clearTimeout(timeout);
+  timeout = setTimeout(mouseStopped, 1000);
+});
+document.addEventListener("mouseout", () => {
+  cursor.style.display = "none";
+});
+
+
+let homeButton = document.getElementById("homeButton");
+if (homeButton) {
+  homeButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.location.href = "http://127.0.0.1:5501/index.html";
+  });
+}
