@@ -51,7 +51,7 @@ submitButton.addEventListener("click", function (event) {
         text: "Welcome!",
         confirmButtonText: "OK",
       });
-      window.location.href = "http://127.0.0.1:5501/index.html";
+      window.location.href = "/index.html";
     })
     .catch((error) => {
       Swal.fire({
@@ -79,7 +79,7 @@ googleLoginButton.addEventListener("click", (ev) => {
         text: `Welcome, ${result.user.displayName}!`,
         confirmButtonText: "OK",
       });
-      window.location.href = "http://127.0.0.1:5501/index.html";
+      window.location.href = "/index.html";
     })
     .catch((error) => {
       Swal.fire({
@@ -113,6 +113,6 @@ let homeButton = document.getElementById("homeButton");
 if (homeButton) {
   homeButton.addEventListener("click", (event) => {
     event.preventDefault();
-    window.location.href = "http://127.0.0.1:5501/index.html";
+    window.location.href = "/index.html";
   });
 }

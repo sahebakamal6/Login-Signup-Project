@@ -10,7 +10,7 @@ let signUpButton = document.getElementById('signupButton');
 if (signUpButton) {
     signUpButton.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.href = "http://127.0.0.1:5500/signup/signup.html"; 
+    window.location.href = "signup/signup.html"; 
   });
 }
 
@@ -19,7 +19,7 @@ let loginButton = document.getElementById('loginButton');
 if (loginButton) {
   loginButton.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.href = "http://127.0.0.1:5501/login/login.html"; 
+    window.location.href = "login/login.html"; 
   });
 }
 
