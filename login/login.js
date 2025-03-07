@@ -21,7 +21,6 @@ const loginForm = document.getElementById("loginForm");
 const emailField = document.getElementById("email");
 const passwordField = document.getElementById("password");
 const submitButton = document.getElementById("submit");
-const googleLoginButton = document.getElementById("googleButton");
 
 if (loginForm) {
   loginForm.setAttribute("novalidate", "true");
@@ -49,34 +48,6 @@ submitButton.addEventListener("click", function (event) {
         icon: "success",
         title: "Login Successful!",
         text: "Welcome!",
-        confirmButtonText: "OK",
-      });
-      window.location.href = "/index.html";
-    })
-    .catch((error) => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: error.message,
-        confirmButtonText: "Try Again",
-      });
-    });
-});
-
-
-googleLoginButton.addEventListener("click", (ev) => {
-  ev.preventDefault();
-
-
-  emailField.removeAttribute("required");
-  passwordField.removeAttribute("required");
-
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful!",
-        text: `Welcome, ${result.user.displayName}!`,
         confirmButtonText: "OK",
       });
       window.location.href = "/index.html";

@@ -1,8 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+import {getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAulFpjikb2gA6UUFZgqUp-n622sCX7Sr8",
@@ -33,7 +30,7 @@ button.addEventListener("click", function (event) {
         text: "Account created successfully",
         confirmButtonText: "OK",
       });
-      window.location.href = "/index.html";
+      window.location.href = "../login/login.html";
       name.value = "";
       email.value = "";
       password.value = "";
